@@ -12,15 +12,27 @@ import * as ReactDOM from "react-dom";
 
 //# React 요소 작성 (React API)
 
+// React 요소 작성 (React API)
 const appElement = React.createElement(
-  /* type */ "div",
-  /* props {} */ {
+  /* type */
+  "div",
+  /* props {} */
+  {
     className: "App",
     id: "reactAppElement",
     "data-type": "React.ReactElement",
-  }
+  },
+  /* ...children -> [child, child, child, ...] */
+  React.createElement(
+    "h1",
+    {
+      title: "React is Awesome!",
+    },
+    "React는",
+    React.createElement("b", null, "어썸(awesome)"),
+    "해~"
+  )
 );
-
 console.log(appElement);
 
 //# React 요소 작성 (With JSX)
@@ -28,7 +40,11 @@ console.log(appElement);
 //@ 도구 없이는 웹에서는 개발이 불가능하다!
 
 const appElementJSX = (
-  <div className="App" id="reactAppElement" data-type="React.ReactElement" />
+  <div className="App" id="reactAppElement" data-type="React.ReactElement">
+    <h1 title="React is Awesome!">
+      React는 <b>어썸(awesome)</b>해~
+    </h1>
+  </div>
 );
 
 console.log(appElementJSX);
