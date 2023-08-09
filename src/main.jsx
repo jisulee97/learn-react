@@ -137,9 +137,61 @@ console.log(appElementJSX);
 //@ 컴포넌트 이름은 첫글자가 항상 대문자로
 //@ 그래야 JSX 구문에서 사용 가능하니까
 
-// //# App 함수 컴포넌트 만들기
+// createAbbrElement 함수 만들기 (일반 JavaScript에서는 이렇게 활용)
+function createAbbrElement(title, children) {
+  return <abbr title={title}>{children}</abbr>;
+}
+
+// 아래 JSX 코드는 React 요소를 생성한다.
+// 그런데 웹 브라우저는 아래 코드가 해석이 안되요.
+// <abbr title="Document Object Model">DOM</abbr>
+
+// const dom_AbbrElement = createAbbrElement(
+//   'Document Object Model',
+//   'DOM'
+// );
+
+// console.log(dom_AbbrElement);
+
+// const ui_AbbrElement = createAbbrElement(
+//   'User Interface',
+//   'UI'
+// );
+
+// console.log(ui_AbbrElement);
+
+// Abbr 함수 컴포넌트 만들기 (React용)
+function Abbr(props /* { title, children } */) {
+  return (
+    <div>
+      <span>
+        <em>
+          <abbr title={props.title}>{props.children}</abbr>
+        </em>
+      </span>
+    </div>
+  );
+}
+
+// console.log(React.createElement(Abbr)); // <Abbr />
+
+// App 함수 컴포넌트 만들기
+const App = (props) => {
+  return (
+    <div className="App">
+      <Abbr title="Document Object Model">DOM</Abbr>
+      <Abbr title="User Interface">UI</Abbr>
+    </div>
+  );
+};
+
+// normal function
+console.log(createAbbrElement("Document Object Model", "DOM"));
+
+// JSX (대문자로 시작하는 함수)
+console.log(<App />);
 
 /* React 요소 트리를 DOM에 렌더링하려면? ---------------------------------------------- */
 
-//# ReactDOM.createRoot() 를 사용해서 DOM 요소를 ReactDOMRoot 객체로 생성
-//# ReactDOMRoot.render() 메서드로 App을 화면에 표시(렌더링)
+// ReactDOM.createRoot() 를 사용해서 DOM 요소를 ReactDOMRoot 객체로 생성
+// ReactDOMRoot.render() 메서드로 App을 화면에 표시(렌더링)
