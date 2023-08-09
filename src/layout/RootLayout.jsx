@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
+
 import FooterBar from "./FooterBar";
 import HeaderBar from "./HeaderBar";
 
 function RootLayout(props) {
-  console.log(props);
   return (
     <div>
       <HeaderBar />
-      <main></main>
+      <main>{props.children}</main>
       <FooterBar />
     </div>
   );
