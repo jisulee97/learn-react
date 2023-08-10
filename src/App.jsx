@@ -1,6 +1,5 @@
 import RootLayout from "./layout/RootLayout";
-import Home from "./pages/Home";
-// import About from "./pages/About";
+import Practice from "./pages/Practice/Practice";
 
 //  {/* 홈 페이지 : index.html */}
 //  {/* 소개 페이지 : about.html */}
@@ -11,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <RootLayout>
-        <Home />
+        <Practice />
       </RootLayout>
     </div>
   );
