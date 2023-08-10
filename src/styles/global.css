@@ -7,7 +7,9 @@
 body {
   box-sizing: border-box;
   margin: 0;
-  font: 1.6rem/1.5 "SUIT Variable", sans-serif;
+  font:
+    1.6rem/1.5 'SUIT Variable',
+    sans-serif;
 
   /* CSS 중첩 규칙(Nesting Rules) */
   & * {
@@ -34,4 +36,8 @@ button {
 abbr[title] {
   cursor: help;
   text-decoration: none;
+}
+
+[hidden] {
+  display: none !important;
 }
