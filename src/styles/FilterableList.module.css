@@ -1,11 +1,24 @@
+:root {
+  --primary-color: #99e66a;
+  --white-color: #f0f0f0;
+}
+
 .primary {
-  color: #be3434;
+  color: var(--primary-color);
+
+  &::placeholder {
+    color: color-mix(
+      in srgb,
+      var(--primary-color) 80%,
+      var(--white-color) 100%
+    );
+  }
 }
 
 .secondary {
-  color: #34b2be;
+  color: #29a0d0;
 }
 
 .accent {
-  color: #8034be;
+  color: #cc8ddd;
 }

@@ -25,9 +25,6 @@ button {
   cursor: pointer;
   font-size: 1.6rem; /* 16px */
 
-  &:hover:not(:disabled) {
-  }
-
   &:disabled {
     cursor: not-allowed;
   }
@@ -40,4 +37,20 @@ abbr[title] {
 
 [hidden] {
   display: none !important;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: #0007;
+}
+
+.container {
+  padding: 24px;
+  background: #4744be99;
+  color: #17172d;
 }
