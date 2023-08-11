@@ -19,7 +19,6 @@ function Controller() {
         direction="up"
         label="스크롤 업"
         onClick={() => {
-          console.log('go to up');
           const practiceElement = getNode('.Practice');
           practiceElement.scroll({ top: 0, behavior: 'smooth' });
         }}
