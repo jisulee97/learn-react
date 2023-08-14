@@ -1,6 +1,6 @@
 /* eslint-disable no-inner-declarations */
 import Switcher from '@/components/Switcher/Switcher';
-import React from 'react';
+import { useState } from 'react';
 
 {
   // 로컬 변수
@@ -27,11 +27,36 @@ import React from 'react';
 
   // console.log(isReady);
   // console.log(setIsReady);
+
+  {
+    /* <p>{myName}</p> */
+  }
+  {
+    /* <button type='button' onClick={handleUpdateMyName}>나의 이름을 바꿔줘</button> */
+  }
+  {
+    /* Atomic Component → Stateless or Presentational */
+  }
 }
 
-function Demo() {
-  const [isReady, setIsReady] = React.useState(false);
+function DemoPage() {
+  // 다크 모드 상태 관리
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const handleToggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
+  // 리듀스 모션 상태 관리
+  const [isReducedMotion, setIsReducedMotion] = useState(true);
+  const handleToggleReducedMotion = () => {
+    // setIsReducedMotion((prevState) => {
+    //   const nextState = !prevState;
+    // });
+    setIsReducedMotion(!isReducedMotion);
+  };
+
+  // 아 유 레디 상태 관리
+  const [isReady, setIsReady] = useState(true);
   const handleToggleReady = () => {
     setIsReady(!isReady);
   };
@@ -47,19 +72,21 @@ function Demo() {
         gap: 8,
       }}
     >
-      {/* <p>{myName}</p> */}
-      {/* <button type='button' onClick={handleUpdateMyName}>나의 이름을 바꿔줘</button> */}
-      {/* Atomic Component → Stateless or Presentational */}
-      <Switcher on={isReady} label="다크 모드" onClick={handleToggleReady} />
       <Switcher
-        on={isReady}
+        on={isDarkMode}
+        label="다크 모드"
+        onClick={handleToggleDarkMode}
+      />
+      <Switcher
+        on={isReducedMotion}
         onText="on"
         offText="off"
         label="리듀스 모션"
-        onClick={handleToggleReady}
+        onClick={handleToggleReducedMotion}
       />
+      <Switcher on={isReady} label="아 U 레디?" onClick={handleToggleReady} />
     </div>
   );
 }
 
-export default Demo;
+export default DemoPage;
