@@ -1,10 +1,9 @@
-import styles from '@/styles/FooterBar.module.css';
-
 function FooterBar() {
   return (
-    // <footer className='container'>
-    <footer className={styles.container}>
-      <small>모든 저작권은 이듬(EUID)에 있습니다.</small>
+    <footer className="p-5 grid place-content-center bg-slate-200">
+      <small className="text-base text-slate-700">
+        모든 저작권은 이듬(EUID)에 있습니다.
+      </small>
     </footer>
   );
 }
