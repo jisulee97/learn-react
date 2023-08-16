@@ -288,13 +288,14 @@
 //   );
 // }
 
-import { StrictMode } from "react";
+import { StrictMode } from 'react';
 //@ React로 개발할 때 개발자가 실수 할 수 있는 문제를 알려줄거니까 <StrictMode>로 <App />을 감싸라!
-import { createRoot } from "react-dom/client";
-import App from "./App";
-import "./styles/global.css";
+import { createRoot } from 'react-dom/client';
+import App from './App';
+// import ReactDOM from 'react-dom/client';
+import './styles/tailwind.css';
 
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
   </StrictMode>
