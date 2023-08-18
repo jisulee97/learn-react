@@ -1,5 +1,5 @@
 import RootLayout from './layout/RootLayout';
-import LearnStateAndEffects from './pages/State_ArrayType';
+import LearnStateAndEffects from './pages/LearnStateAndEffects';
 
 function App() {
   return (
