@@ -1,5 +1,3 @@
-// http:// 에서 s 를 못 붙이는 이유 : 보안처리하면 비용적인 부분 때문에
-
 // 데이터 가져오기 (PocketBase 서버: 백엔드 데이터베이스 솔루션)
 
 import { useEffect, useState } from 'react';
@@ -20,9 +18,12 @@ function LearnStateAndEffects() {
   // 이펙트가 필요해!!!
   // React 외적인 일을 처리
   useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+
     setStatus('loading');
 
-    fetch('http://127.0.0.1:8090/api/collections/todos/records')
+    fetch('http://127.0.0.1:8090/api/collections/todos/records', { signal })
       .then((response) => response.json())
       .then((responseData) => {
         setStatus('success');
@@ -32,6 +33,10 @@ function LearnStateAndEffects() {
         setStatus('error');
         setError(error);
       });
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   // 함수 몸체: 문 또는 식, 함수
