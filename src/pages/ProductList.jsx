@@ -17,6 +17,7 @@ function ProductList() {
       try {
         const response = await fetch(PB_PRODUCTS_ENDPOINT);
         const responseData = await response.json();
+        console.log(responseData);
         setData(responseData);
       } catch (error) {
         setError(error);
@@ -28,8 +29,20 @@ function ProductList() {
     fetchProducts();
   }, []);
 
+  // javascript statement
+  // if (data) {
+  //   if ('items' in data) {
+  //     if (Array.isArray(data.items)) {
+  //       return data.items.map(item => (
+  //         <ProductItem key={item.id} item={item} />
+  //       ))
+  //     }
+  //   }
+  // }
+
   return (
-    <ul>
+    <ul className="grid grid-cols-3 m-10">
+      {/* javascript expression */}
       {data &&
         data.items &&
         data.items?.map((item) => <ProductItem key={item.id} item={item} />)}
@@ -40,8 +53,12 @@ function ProductList() {
 function ProductItem({ item }) {
   return (
     <li>
-      <figure className="flex flex-col">
-        <img src={getPbImageURL(item, 'photo')} alt="" />
+      <figure className="flex flex-col items-start">
+        <img
+          src={getPbImageURL(item, 'photo')}
+          className="h-96 w-auto"
+          alt=""
+        />
         <figcaption className="flex flex-col">
           <span className="title">
             {item.title} [ {item.color} ]
