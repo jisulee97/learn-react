@@ -1,7 +1,7 @@
 function Products() {
   return (
     <div>
-      <h1 className="text-emerald-500">Products</h1>
+      <h2>상품 페이지</h2>
     </div>
   );
 }

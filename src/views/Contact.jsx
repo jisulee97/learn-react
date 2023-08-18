@@ -1,7 +1,7 @@
 function Contact() {
   return (
     <div>
-      <h1 className="text-emerald-500">Contact</h1>
+      <h2>세부 페이지</h2>
     </div>
   );
 }
