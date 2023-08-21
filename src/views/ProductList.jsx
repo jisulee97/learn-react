@@ -4,7 +4,9 @@ import ProductItem from './ProductItem';
 import useMouse from '@/hooks/useMouse';
 
 const PB_PRODUCTS_ENDPOINT = `
-  http://127.0.0.1:8090/api/collections/products/records
+  ${
+    import.meta.env.VITE_PB_URL
+  }http://127.0.0.1:8090/api/collections/products/records
 `;
 
 function ProductList() {
