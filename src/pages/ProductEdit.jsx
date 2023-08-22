@@ -2,7 +2,10 @@ import { useEffect, useId, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useProductItem from '@/hooks/useProductItem';
 import Spinner from '@/components/Spinner';
-import { useDelete as useDeleteProduct } from '@/hooks/products/useProducts';
+import {
+  useDelete as useDeleteProduct,
+  useUpdate as useUpdateProduct,
+} from '@/hooks/products/useProducts';
 
 const initialFormState = {
   title: '',
@@ -23,6 +26,7 @@ function ProductEdit() {
   const [formState, setFormState] = useState(initialFormState);
 
   const deleteProduct = useDeleteProduct();
+  const updateProduct = useUpdateProduct();
 
   useEffect(() => {
     if (!isLoading && data) {
@@ -42,28 +46,11 @@ function ProductEdit() {
   };
 
   const handleEditProduct = (e) => {
-    e.preventDefault(); // ← 이유
+    e.preventDefault();
 
-    // client → server(pb)
-    // Content-Type: application/json
-    fetch(
-      `${
-        import.meta.env.VITE_PB_API
-      }/collections/products/records/${productId}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formState),
-      }
-    )
-      .then(() => {
-        navigate('/products');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    updateProduct(productId, formState)
+      .then(() => navigate('/products'))
+      .catch((error) => console.error(error));
   };
 
   const handleDeleteProduct = () => {
@@ -76,18 +63,6 @@ function ProductEdit() {
           navigate('/products');
         })
         .catch((error) => console.error(error));
-
-      // fetch(`${import.meta.env.VITE_PB_API}/collections/products/records/${productId}`, {
-      //   method: 'DELETE'
-      // })
-      // .then(() => {
-      //   // PB에서 지웠다(성공)
-      //   // 제품 목록 페이지로 이동
-      //   navigate('/products');
-      // })
-      // .catch(error => {
-      //   console.error(error);
-      // });
     }
   };
 
