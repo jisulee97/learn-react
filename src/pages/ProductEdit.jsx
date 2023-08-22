@@ -6,6 +6,7 @@ import {
   useDelete as useDeleteProduct,
   useUpdate as useUpdateProduct,
 } from '@/hooks/products/useProducts';
+import debounce from '@/utils/debounce';
 
 const initialFormState = {
   title: '',
@@ -28,6 +29,10 @@ function ProductEdit() {
   const deleteProduct = useDeleteProduct();
   const updateProduct = useUpdateProduct();
 
+  // useEffect(() => {
+  //   console.log(formState);
+  // }, [formState])
+
   useEffect(() => {
     if (!isLoading && data) {
       setFormState({
@@ -44,6 +49,13 @@ function ProductEdit() {
       [target.name]: target.value,
     });
   };
+
+  const handleDebounceChangeInput = debounce(({ target }) => {
+    setFormState({
+      ...formState,
+      [target.name]: target.value,
+    });
+  }, 500);
 
   const handleEditProduct = (e) => {
     e.preventDefault();
@@ -71,6 +83,10 @@ function ProductEdit() {
   }
 
   if (data) {
+    console.log(formState.title);
+    console.log(formState.color);
+    console.log(formState.price);
+
     return (
       <>
         <h2 className="text-2xl text-center">
@@ -84,8 +100,8 @@ function ProductEdit() {
               type="text"
               name="title"
               id={titleId}
-              value={formState.title}
-              onChange={handleChangeInput}
+              defaultValue={formState.title}
+              onChange={handleDebounceChangeInput}
             />
           </div>
           {/* color */}
@@ -95,8 +111,8 @@ function ProductEdit() {
               type="text"
               name="color"
               id={colorId}
-              value={formState.color}
-              onChange={handleChangeInput}
+              defaultValue={formState.color}
+              onChange={handleDebounceChangeInput}
             />
           </div>
           {/* price */}
@@ -106,8 +122,8 @@ function ProductEdit() {
               type="number"
               name="price"
               id={priceId}
-              value={formState.price}
-              onChange={handleChangeInput}
+              defaultValue={formState.price}
+              onChange={handleDebounceChangeInput}
             />
           </div>
           <div>
