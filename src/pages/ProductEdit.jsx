@@ -122,8 +122,10 @@ function ProductEdit() {
               type="number"
               name="price"
               id={priceId}
-              defaultValue={formState.price}
-              onChange={handleDebounceChangeInput}
+              // defaultValue={formState.price}
+              // onChange={handleDebounceChangeInput}
+              value={formState.price}
+              onChange={handleChangeInput}
             />
           </div>
           <div>
