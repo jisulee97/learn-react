@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import pb from '@/api/pocketbase';
+import debounce from '@/utils/debounce';
 
 function SignIn() {
   const navigate = useNavigate();
@@ -25,13 +26,15 @@ function SignIn() {
     navigate('/');
   };
 
-  const handleInput = (e) => {
+  const handleInput = debounce((e) => {
     const { name, value } = e.target;
     setFormState({
       ...formState,
       [name]: value,
     });
-  };
+  }, 400);
+
+  // const handleDebounceInput = debounce(handleInput, 500);
 
   return (
     <div>
@@ -47,7 +50,7 @@ function SignIn() {
             type="email"
             name="email"
             id="email"
-            value={formState.email}
+            defaultValue={formState.email}
             onChange={handleInput}
             className="border border-slate-300 ml-2"
           />
@@ -58,7 +61,7 @@ function SignIn() {
             type="password"
             name="password"
             id="password"
-            value={formState.password}
+            defaultValue={formState.password}
             onChange={handleInput}
             className="border border-slate-300 ml-2"
           />
