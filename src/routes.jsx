@@ -20,6 +20,7 @@ import RefExampleReferencingDOM from './learn/6-ref-referencing-dom';
 import GSAP_Animation from './learn/7-1-ref-gsap-animation';
 import GSAP_Context from './learn/7-2-ref-gsap-context';
 import FramerMotion_Animation from './learn/8-framer-motion';
+import ProtectRoute from './components/ProtectRoute';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +29,14 @@ const router = createBrowserRouter(
       <Route path="signin" element={<SignIn />} />
       <Route path="signup" element={<SignUp />} />
       <Route path="products" element={<Products />} />
-      <Route path="product/edit/:productId" element={<ProductEdit />} />
+      <Route
+        path="product/edit/:productId"
+        element={
+          <ProtectRoute>
+            <ProductEdit />
+          </ProtectRoute>
+        }
+      />
       <Route path="contact" element={<Contact />} />
 
       {/* 학습 주제 */}
