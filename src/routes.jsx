@@ -15,6 +15,8 @@ import LiftingStateUp from './learn/2-lifting-state-up';
 import PropsDrillingIssue from './learn/3-props-drilling-issue';
 import ReactContextAPI1 from './learn/4-1-react-context-api';
 import ReactContextAPI2 from './learn/4-2-seperation-react-context';
+import RefExampleMemoValues from './learn/5-ref-1-memo-values';
+import RefExampleReferencingDOM from './learn/6-ref-2-referencing-dom';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +33,8 @@ const router = createBrowserRouter(
       <Route path="learn/03" element={<PropsDrillingIssue />} />
       <Route path="learn/04/01" element={<ReactContextAPI1 />} />
       <Route path="learn/04/02" element={<ReactContextAPI2 />} />
+      <Route path="learn/05" element={<RefExampleMemoValues />} />
+      <Route path="learn/06" element={<RefExampleReferencingDOM />} />
     </Route>
   )
 );
