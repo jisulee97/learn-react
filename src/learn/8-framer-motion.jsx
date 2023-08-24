@@ -3,18 +3,28 @@ import { useState } from 'react';
 
 function FramerMotion_Animation() {
   const [count, setCount] = useState(0);
-  const [keys, setKeys] = useState(
-    Array(3)
-      .fill(null)
-      .map((_, i) => i)
-  );
 
   const handleCountUp = () => {
     setCount((c) => c + 10);
   };
 
+  const [key1, setKey1] = useState(Math.random());
+  const [key2, setKey2] = useState(Math.random());
+  const [key3, setKey3] = useState(Math.random());
+
+  const [keys, setKeys] = useState(
+    Array(3)
+      .fill(null)
+      .map(() => Math.random())
+  );
+
+  console.log(keys);
+
   const handleResetAnimation = () => {
-    setKeys(keys.map((k, i) => k + 1 + i));
+    setKey1(Math.random());
+    setKey2(Math.random());
+    setKey3(Math.random());
+    setKeys(keys.map(() => Math.random()));
   };
 
   return (
@@ -50,6 +60,9 @@ function FramerMotion_Animation() {
         </button>
       </div>
       <div className="flex gap-10">
+        <Circle key={key1} />
+        <Circle key={key2} />
+        <Circle key={key3} />
         {keys.map((key) => (
           <Circle key={key} />
         ))}
@@ -63,6 +76,14 @@ function Circle() {
     <motion.figure
       role="none"
       className="grid place-content-center w-16 h-16 rounded-full bg-yellow-300"
+      initial={{ y: -150 }}
+      animate={{ y: 0 }}
+      transition={{
+        duration: 4,
+        type: 'spring',
+        stiffness: 400,
+        damping: 5,
+      }}
     >
       <motion.img
         // 초기 상태(initial)
@@ -72,8 +93,8 @@ function Circle() {
         // 트랜지션 상태(transition)
         transition={{
           type: 'spring',
-          stiffness: 260,
-          damping: 20,
+          stiffness: 260, // 뻣뻣함 (팽팽함)
+          damping: 20, // 마찰(제동)
         }}
         src="/react.png"
         alt="React"
