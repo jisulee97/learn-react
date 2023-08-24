@@ -16,7 +16,7 @@ import PropsDrillingIssue from './learn/3-props-drilling-issue';
 import ReactContextAPI1 from './learn/4-1-react-context-api';
 import ReactContextAPI2 from './learn/4-2-seperation-react-context';
 import RefExampleMemoValues from './learn/5-ref-1-memo-values';
-import RefExampleReferencingDOM from './learn/6-ref-2-referencing-dom-web-animation-api.jsx';
+import RefExampleReferencingDOM from './learn/6-ref-2-referencing-dom.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
