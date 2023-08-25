@@ -22,7 +22,7 @@ import ProductEdit from './pages/ProductEdit';
 import Products from './pages/Products';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import LocalStorage from './learn/10-local-storage';
+import LocalStorage from './learn/partials/10-local-storage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
