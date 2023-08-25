@@ -1,12 +1,13 @@
-import { useEffect, useId, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import useProductItem from '@/hooks/useProductItem';
 import Spinner from '@/components/Spinner';
 import {
   useDelete as useDeleteProduct,
   useUpdate as useUpdateProduct,
 } from '@/hooks/products/useProducts';
+import useProductItem from '@/hooks/useProductItem';
 import debounce from '@/utils/debounce';
+import { useEffect, useId, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const initialFormState = {
   title: '',
@@ -50,12 +51,7 @@ function ProductEdit() {
     });
   };
 
-  const handleDebounceChangeInput = debounce(({ target }) => {
-    setFormState({
-      ...formState,
-      [target.name]: target.value,
-    });
-  }, 500);
+  const handleDebounceChangeInput = debounce(handleChangeInput, 500);
 
   const handleEditProduct = (e) => {
     e.preventDefault();
@@ -89,6 +85,9 @@ function ProductEdit() {
 
     return (
       <>
+        <Helmet>
+          <title>Product Edit - ReactBird</title>
+        </Helmet>
         <h2 className="text-2xl text-center">
           {data.title}({data.color}) 수정 폼
         </h2>
@@ -121,12 +120,10 @@ function ProductEdit() {
             <input
               type="number"
               name="price"
-              id={priceId}
               step={1000}
-              // defaultValue={formState.price}
-              // onChange={handleDebounceChangeInput}
-              value={formState.price}
-              onChange={handleChangeInput}
+              id={priceId}
+              defaultValue={formState.price}
+              onChange={handleDebounceChangeInput}
             />
           </div>
           <div>
