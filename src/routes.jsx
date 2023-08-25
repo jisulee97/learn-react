@@ -21,6 +21,7 @@ import GSAP_Animation from './learn/7-1-ref-gsap-animation';
 import GSAP_Context from './learn/7-2-ref-gsap-context';
 import FramerMotion_Animation from './learn/8-framer-motion';
 import ProtectRoute from './components/ProtectRoute';
+import ComponentsPropTypes from './learn/9-component-prop-types';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -50,6 +51,7 @@ const router = createBrowserRouter(
       <Route path="learn/07/01" element={<GSAP_Animation />} />
       <Route path="learn/07/02" element={<GSAP_Context />} />
       <Route path="learn/08" element={<FramerMotion_Animation />} />
+      <Route path="learn/09" element={<ComponentsPropTypes />} />
     </Route>
   )
 );
