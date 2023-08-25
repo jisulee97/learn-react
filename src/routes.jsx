@@ -19,6 +19,7 @@ import ComponentPropTypes from './learn/9-component-prop-types';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import ProductEdit from './pages/ProductEdit';
+import ProductNew from './pages/ProductNew';
 import Products from './pages/Products';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -31,6 +32,14 @@ const router = createBrowserRouter(
       <Route path="signin" element={<SignIn />} />
       <Route path="signup" element={<SignUp />} />
       <Route path="products" element={<Products />} />
+      <Route
+        path="product/new"
+        element={
+          <ProtectRoute>
+            <ProductNew />
+          </ProtectRoute>
+        }
+      />
       <Route
         path="product/edit/:productId"
         element={
