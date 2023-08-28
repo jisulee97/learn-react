@@ -83,8 +83,9 @@ function ThemeProvider({ displayName = 'ThemeContext.Provider', children }) {
 
 ThemeProvider.propTypes = {
   displayName: string,
-  children: node,
-};
+  children: node
+}
+
 
 export default ThemeProvider;
 

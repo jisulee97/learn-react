@@ -11,9 +11,9 @@ export function useUpdate() {
       {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(productData),
+        body: JSON.stringify(productData)
       }
     );
   };

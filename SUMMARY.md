@@ -1,48 +1,31 @@
 ###### [학습 주제](./PLAN.md) 보기
 
-# 8. 25
+# 8. 25 
 
 - 타입 검사 필요할까? (권장)
-  - JavaScript를 사용해 React 앱을 개발한다면? prop-types 패키지 사용을 권장한다. (props 검사만 가능)
-  - TypeScript를 사용해 React 앱을 개발한다면? 강력한 타입 검사 시스템을 사용해 코드 품질을 높일 수 있다.
+    - JavaScript를 사용해 React 앱을 개발한다면? prop-types 패키지 사용을 권장한다. (props 검사만 가능)
+    - TypeScript를 사용해 React 앱을 개발한다면? 강력한 타입 검사 시스템을 사용해 코드 품질을 높일 수 있다.
+- 로컬 스토리지를 사용해 인증 상태를 유지(persist)할 수 있다.
+- 인증 상태에서만 접속 가능한 루트(route)를 보호(protect)해야 한다.
+- PocketBase 데이터베이스에 파일을 업로드 하려면 JSON이 아니라, FormData를 사용해야 한다.
+- 클라이언트(브라우저) 환경에서 업로드할 이미지를 표시할 경우 `URL.createObjectURL(file)`을 사용한다.
 - useMemo() 훅은 JavaScript의 모든 데이터 유형을 기억(memoization)한다.
-- useCallback() 훅은 JavaScript 함수 유형만 기억한다.
-- useMemo() 훅을 사용해 함수 유형 값을 기억할 수도 있지만, useCallback() 훅을 사용하는 것이 문장 구문이 간결하다.
-
-```JSX
-import { useMemo } from 'react';
-
-function useMyCallback(callback, dependencies) {
-  return useMemo(() => callback, dependencies);
-}
-```
-
-```jsx
-import { useCallback, useMemo } from 'react';
-
-function Component() {
-
-  const myCb = useMyCallback(() => console.log('나를 기억해'), []);
-  // vs.
-  const reactCb = useCallback(() => console.log('나를 기억해'), []);
-  const reactCbMemo = useMemo(() => () => console.log('나를 기억해'), []);
-
-  return (...);
-}
-```
+- useCallback() 훅은 JavaScript 함수 유형만 기억한다. 
+- useMemo() 훅을 사용해 함수 유형 값을 기억할 수도 있지만, useCallback() 훅을 사용하는 것이 문장 구문이 간결하다. ([답변 참고](https://www.notion.so/useMemo-VS-useCallback-e546342310fc4ce492d22d272ec343d1?pvs=4#5f497e3b1dca4a67b732ad3139f5618c))
 
 # 8. 24
 
 1. Refs를 활용해 값을 참조해 기억하거나, DOM 요소를 참조할 수 있습니다.
 1. [GSAP](https://greensock.com/gsap/) 애니메이션 라이브러리는 명령형 방식으로 작성해야 합니다. (`useRef` + `useLayoutEffect`(with cleanup))
-1. React 18+부터 지원하는 동시성 렌더링 모드 영향으로 GSAP 컨텍스트([`gsap.context()`](<https://greensock.com/docs/v3/GSAP/gsap.context()>))를 사용해야 스크린 티어링(screen tearing) 현상을 해결할 수 있습니다.
-1. [Framer Motion](https://framer.com/motion)은 React 전용 애니메이션 라이브러리로 선언형 프로그래밍 방식으로 작성합니다.
-1. 고유한 `key` 속성(prop) 설정은 컴포넌트 (또는 애니메이션) 초기화에 사용될 수 있습니다.
+1. React 18+부터 지원하는 동시성 렌더링 모드 영향으로 GSAP 컨텍스트([`gsap.context()`](https://greensock.com/docs/v3/GSAP/gsap.context()))를 사용해야 스크린 티어링(screen tearing) 현상을 해결할 수 있습니다.
+1. [Framer Motion](https://framer.com/motion)은 React 전용 애니메이션 라이브러리로 선언형 프로그래밍 방식으로 작성합니다. 
+1. 고유한 `key` 속성(prop) 설정은 컴포넌트 (또는 애니메이션) 초기화에 사용될 수 있습니다. 
 1. PocketBase AuthStore를 사용해 로그인 상황을 체크하거나, 로그아웃 등 기능을 사용할 수 있습니다.
 1. React Context API를 사용해 인증 상황을 앱에 공급할 수 있습니다.
 1. `useAuth` 커스텀 훅을 사용하면 앱 어디서나 인증 상황을 주입받을 수 있습니다.
-1. 루트 보호(Protected Route) 컴포넌트는 인증된 사용자만 접근 가능하도록 처리합니다.
+1. 루트 보호(Protected Route) 컴포넌트는 인증된 사용자만 접근 가능하도록 처리합니다. 
 1. [react-hot-toast](https://react-hot-toast.com/docs/toast) 라이브러리를 사용해 손쉽게 사용자에게 공지(Notification)할 수 있습니다.
+
 
 # 8. 23
 
@@ -56,12 +39,12 @@ function Component() {
 1. 컨텍스트를 사용하려면 먼저 생성해야 합니다. `React.createContext()`
 1. 생성된 컨텍스트를 통해 공급자 컴포넌트를 사용할 수 있습니다. `<Context.Provider />`
 1. 공급자 컴포넌트는 `value` 속성(prop)을 사용해 깊숙히 위치한 하위 컴포넌트에 값을 공급합니다.
-1. `useContext()` 훅을 사용하면 공급된 값을 영역 내 어느 컴포넌트나 가져와 사용할 수 있습니다.
+1. `useContext()` 훅을 사용하면 공급된 값을 영역 내 어느 컴포넌트나 가져와 사용할 수 있습니다. 
 1. 컨텍스트는 컴포넌트 내부에 포함되지 않아도 됩니다. 별도 분리하여 관리할 수도 있습니다. `src/contexts/Theme.jsx`
 1. 컨텍스트 공급자(Context.Provider)를 감싸는 래퍼 컴포넌트를 사용하면 코드를 캡술화하여 관리할 수 있습니다.
 1. 컨텍스트 값을 쉽게 꺼내올 수 있도록 사용자가 훅을 정의해 사용할 수도 있습니다. `useTheme`
 1. `useRef()` 훅은 컴포넌트 렌더링에 영향을 주지 않으면서 값을 업데이트(그것도 뮤테이션 방식으로)할 수 있습니다.
-1. `useRef()`를 통해 참조된 값을 변경해도 컴포넌트는 리-렌더링 되지 않습니다.
+1. `useRef()`를 통해 참조된 값을 변경해도 컴포넌트는 리-렌더링 되지 않습니다. 
 
 # 8. 22
 
@@ -69,6 +52,7 @@ function Component() {
 1. 폼 상태(Form State)는 개별적으로 관리할 수도 있지만, 한데 묶어서 관리할 수 있습니다.
 1. PocketBase 인증(Authentication)을 사용해 회원가입, 로그인 기능을 사용할 수 있습니다.
 1. 회원가입(Signup) 페이지와 로그인 페이지의 폼은 유사합니다. (재사용 가능한 컴포넌트를 활용)
+
 
 # 8. 21
 
@@ -78,6 +62,7 @@ function Component() {
 1. 리액트 라우터를 사용하면 루트 파라미터(route parameters)를 사용해 동적 라우팅(dynamic routing)할 수 있습니다.
 1. 동적 라우팅 사용 시, 루트 파라미터는 콜론(`:`)을 사용해 표기합니다.
 
+
 # 8. 18
 
 1. 커스텀 훅(Custom Hook)을 사용해 재사용할 로직(logic)을 분리할 수 있습니다.
@@ -86,23 +71,23 @@ function Component() {
 # 8. 17
 
 1. 사이드 이펙트를 관리하는 이벤트 핸들러 및 useEffect 훅의 콜백 함수를 실습하고 요약 정리합니다.
-   - 이펙트 콜백 함수 (effect callback function)
-   - 이펙트 콜백 함수 실행 조건 설정 (dependencies)
-   - 이펙트 클린업 함수 (cleanup)
+    - 이펙트 콜백 함수 (effect callback function)
+    - 이펙트 콜백 함수 실행 조건 설정 (dependencies)
+    - 이펙트 클린업 함수 (cleanup)
 1. 서버 데이터 요청/응답
-   - 데이터 가져오기(fetch Data)
-     - Fetch API 활용
-   - useEffect 훅을 사용해 데이터 가져오기 상태 설정
-     - 대기(pending)
-     - 로딩(loading)
-     - 성공(success)
-     - 실패(error)
-   - Async 함수를 사용하는 방법
+    - 데이터 가져오기(fetch Data)
+        - Fetch API 활용
+    - useEffect 훅을 사용해 데이터 가져오기 상태 설정
+        - 대기(pending)
+        - 로딩(loading)
+        - 성공(success)
+        - 실패(error)
+    - Async 함수를 사용하는 방법
 1. PocketBase 백엔드 데이터베이스 솔루션
-   - 다운로드 및 서버 구동
-   - 콜렉션, 레코드, 필드 개념 이해
-   - 콜렉션 생성, 필드 추가
-   - API 규칙 설정 (접근 권한)
+    - 다운로드 및 서버 구동
+    - 콜렉션, 레코드, 필드 개념 이해
+    - 콜렉션 생성, 필드 추가
+    - API 규칙 설정 (접근 권한)
 
 # 8. 16
 
@@ -143,6 +128,7 @@ function Component() {
 1. StrictMode는 배포(production) 모드에서 제거되므로 성능에 영향을 주지 않습니다.
 1. 로컬 뮤테이션은 컴포넌트 함수 내부에서 이뤄져도 문제가 되지 않습니다.
 
+
 # 8. 11
 
 ## CSS 모듈 요약
@@ -166,5 +152,5 @@ function Component() {
 1. 배열 순환 리스트 렌더링
 1. 배열 역순으로 정렬한 다음 리스트 렌더링 (원본 배열을 변경하면 안됨, 배열 복사 또는 새로운 배열 반환 메서드)
 1. 객체 순환 리스트 렌더링 (객체 → 배열 객체로 변경 → map 메서드로 순환)
-1. `<dl>` 내부에 `<div>`를 사용하는 것이 적절한 지 고민한 후 적절하지 않으면 `<></>`를 사용
+1. `<dl>` 내부에 `<div>`를 사용하는 것이 적절한 지 고민한 후 적절하지 않으면 `<></>`를 사용 
 1. `<></>`의 경우 리스트 렌더링 시 `key` prop을 설정할 수 없음. 그러므로 `<React.Fragment key={} />` 활용해야 함

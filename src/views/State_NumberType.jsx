@@ -24,11 +24,9 @@ function LearnStateAndEffects() {
       <h2 className="text-indigo-600 text-2xl uppercase">
         Learn State And Effects {count}
       </h2>
-      <div className="flex flex-col gap-2 items-end">
-        <div className="flex gap-2 items-center">
-          <label htmlFor={stepperId} className="text-base">
-            step
-          </label>
+      <div className='flex flex-col gap-2 items-end'>
+        <div className='flex gap-2 items-center'>
+          <label htmlFor={stepperId} className='text-base'>step</label>
           <input
             id={stepperId}
             type="number"

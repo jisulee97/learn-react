@@ -6,6 +6,7 @@ import {
 import ProtectRoute from './components/ProtectRoute';
 import RootLayout from './layout/RootLayout';
 import PassingProps from './learn/1-passing-props';
+import LocalStorage from './learn/10-local-storage';
 import LiftingStateUp from './learn/2-lifting-state-up';
 import PropsDrillingIssue from './learn/3-props-drilling-issue';
 import ReactContextAPI1 from './learn/4-1-react-context-api';
@@ -23,11 +24,12 @@ import ProductNew from './pages/ProductNew';
 import Products from './pages/Products';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import LocalStorage from './learn/partials/10-local-storage';
+import ReactContextIssue from './learn/11-context-problem';
+import ZustandLibrary from './learn/12-zustand-library';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout displaySideMenu={true} />}>
+    <Route path="/" element={<RootLayout displaySideMenu={!true} />}>
       <Route index element={<Home />} />
       <Route path="signin" element={<SignIn />} />
       <Route path="signup" element={<SignUp />} />
@@ -49,6 +51,7 @@ const router = createBrowserRouter(
         }
       />
       <Route path="contact" element={<Contact />} />
+      <Route path="*" element={<Home />} />
 
       {/* 학습 주제 */}
       <Route path="learn/01" element={<PassingProps />} />
@@ -63,26 +66,10 @@ const router = createBrowserRouter(
       <Route path="learn/08" element={<FramerMotion_Animation />} />
       <Route path="learn/09" element={<ComponentPropTypes />} />
       <Route path="learn/10" element={<LocalStorage />} />
+      <Route path="learn/11" element={<ReactContextIssue />} />
+      <Route path="learn/12" element={<ZustandLibrary />} />
     </Route>
   )
 );
 
 export default router;
-
-// 최신 방법(기본 방법)
-// 배열 → 객체
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <RootLayout />,
-//     // 중첩된 라우트
-//     children: [
-//       // '/'
-//       { index: true, element: <Home /> },
-//       // '/products'
-//       { path: 'products', element: <Products /> },
-//       // '/contact'
-//       { path: 'contact', element: <Contact /> },
-//     ],
-//   },
-// ]);

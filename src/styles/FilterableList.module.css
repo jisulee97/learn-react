@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #99e66a;
+  --primary-color: #be3434;
   --white-color: #f0f0f0;
 }
 
@@ -7,24 +7,14 @@
   color: var(--primary-color);
 
   &::placeholder {
-    color: color-mix(
-      in srgb,
-      var(--primary-color) 80%,
-      var(--white-color) 100%
-    );
+    color: color-mix(in srgb, var(--primary-color) 80%, var(--white-color) 100%);
   }
 }
 
 .secondary {
-  color: #29a0d0;
+  color: #34b2be;
 }
 
 .accent {
-  color: #cc8ddd;
+  color: #8034be;
 }
-
-/* CSS 모듈 요약
-CSS 클래스 코드를 모듈 객체로 받아와 고유한 이름을 사용할 수 있습니다.
-다른 사람이 작성한 클래스 이름과 절대로 충돌할 일이 없다.
-컴포넌트 스타일을 보호할 수 있다.
-사용자 정의 클래스 모듈 이름을 설정할 수 있다. (참고) */

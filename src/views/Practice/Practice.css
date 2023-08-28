@@ -14,7 +14,7 @@
 
   overflow-y: auto;
 
-  & h1 {
+  & h2 {
     margin: 0;
   }
 
@@ -32,6 +32,7 @@
     display: inline-block;
     margin-bottom: 8px;
   }
+
 
   .descriptionList {
     margin: 0;
@@ -143,4 +144,5 @@
       translate: 0 8px;
     }
   }
+
 }

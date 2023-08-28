@@ -1,4 +1,4 @@
-import GrandChild from './GrandChild';
+import GrandChild from "./GrandChild";
 
 export default function Child({ color, onChangeColor }) {
   return (
@@ -12,3 +12,4 @@ export default function Child({ color, onChangeColor }) {
     </div>
   );
 }
+

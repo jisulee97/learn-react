@@ -7,7 +7,7 @@ function throttle(callback, timeout = 300) {
         timer = null;
       }, timeout);
     }
-  };
+  }
 }
 
 export default throttle;

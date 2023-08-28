@@ -1,4 +1,4 @@
-import Parent from './Parent';
+import Parent from "./Parent";
 
 export default function GrandParent({ color, onChangeColor }) {
   return (
